@@ -26,7 +26,7 @@
   docker_image:
    name: <dockerhub_repo_name>
    repository: <dockerhub_repo_name>
-   tag: "{{ image_tag_passed_as_a_variable }}"
+   tag: "{{ TAG_VERSION }}"
    source: pull
 
 
@@ -35,7 +35,7 @@
   become_user: root
   docker_container:
     name: <container_name>
-    image: <dockerhub_repo_name>:{{ image_tag_passed_as_a_variable }}
+    image: <dockerhub_repo_name>:{{ TAG_VERSION }}
     volumes:
      - /home/user/myproject:/bin/jar/myproject
     env: 
@@ -44,7 +44,7 @@
     networks:
      - name: <docker_network>
     ports:
-      - "$destination:$host"
+      - "$destination_Port:$host_Port"
     restart_policy: always
 
 

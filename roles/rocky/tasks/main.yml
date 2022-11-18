@@ -24,8 +24,8 @@
   become: yes
   become_user: root
   docker_image:
-   name: <dockerhub_repo_name>
-   repository: <dockerhub_repo_name>
+   name: Rocky000/myProjectRepo
+   repository: Rocky000/myProjectRepo
    tag: "{{ TAG_VERSION }}"
    source: pull
 
@@ -35,7 +35,7 @@
   become_user: root
   docker_container:
     name: <container_name>
-    image: <dockerhub_repo_name>:{{ TAG_VERSION }}
+    image: Rocky000/myProjectRepo:{{ TAG_VERSION }}
     volumes:
      - /home/user/myproject:/bin/jar/myproject
     env: 

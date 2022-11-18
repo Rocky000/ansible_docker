@@ -1,0 +1,8 @@
+---
+ - name: docker building .....
+   hosts: rocky
+   vars:
+     date: "{{ lookup('pipe', 'date +%Y%m%d') }}"
+   roles:
+     - rocky
+

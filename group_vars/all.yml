@@ -1,0 +1,5 @@
+#Defining the python interpreter to avoid dependencies
+ansible_python_interpreter: /usr/bin/python3
+#it is better to use a credentials file with path then using a plain text
+docker_user: <docker_hub_user>
+docker_password: <docker_hub_credentials> 

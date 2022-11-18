@@ -1,0 +1,50 @@
+---
+- name: "Docker login to repository"
+  become: yes
+  become_user: root
+  docker_login:
+    username: "{{ docker_user }}"
+    password: "{{ docker_password }}"
+        
+- name: Stop a container
+  become: yes
+  become_user: root
+  docker_container:
+    name: <container_name>
+    state: stopped
+ 
+- name: remove container
+  become: yes
+  become_user: root
+  docker_container:
+    name: <container_name>
+    state: absent
+     
+- name: Docker pull images
+  become: yes
+  become_user: root
+  docker_image:
+   name: <dockerhub_repo_name>
+   repository: <dockerhub_repo_name>
+   tag: "{{ image_tag_passed_as_a_variable }}"
+   source: pull
+
+
+- name: Start container, connect to network and link with much needed environment values and volumes 
+  become: yes
+  become_user: root
+  docker_container:
+    name: <container_name>
+    image: <dockerhub_repo_name>:{{ image_tag_passed_as_a_variable }}
+    volumes:
+     - /home/user/myproject:/bin/jar/myproject
+    env: 
+     AWS_ACCESS_KEY=<YOUR_AWS_KEY>
+    env_file: <.env_file_with_path>
+    networks:
+     - name: <docker_network>
+    ports:
+      - "$destination:$host"
+    restart_policy: always
+
+

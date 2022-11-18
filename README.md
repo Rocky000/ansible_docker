@@ -1,4 +1,4 @@
-# ansible_docker
+# Ansible Docker
 Recently, I was trying to automate a process of pulling docker image and running the docker image with Ansible. Which has never been done before on our company. Previously it was done via bash command simply running from groovy script, which is prone to result in pipeline failure.
 
 I thought to make it a self-reliant Ansible for docker. That I can use any other projects just by simply modifying some values (like- Repo name, ENV file, volumes etc.)
